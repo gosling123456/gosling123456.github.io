@@ -1,0 +1,109 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>沿Y轴旋转的镜像图片</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-color: rgb(100,8,116);-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 100vh;-->
+<!--            /*background-color: #f0f0f0;*/-->
+<!--            perspective: 1000px; /* 添加透视效果 */-->
+<!--        }-->
+<!--        .container {-->
+<!--            position: relative;-->
+<!--            width: 300px; /* 根据需要调整容器大小 */-->
+<!--            height: 300px; /* 根据需要调整容器大小 */-->
+<!--            transform-style: preserve-3d; /* 保持3D效果 */-->
+<!--            animation: rotation 5s infinite linear;-->
+<!--        }-->
+<!--        @keyframes rotation {-->
+<!--            from {-->
+<!--                transform: rotateY(0deg);-->
+<!--            }-->
+<!--            to {-->
+<!--                transform: rotateY(360deg);-->
+<!--            }-->
+<!--        }-->
+<!--        img {-->
+<!--            width: 100%; /* 让图片填满容器 */-->
+<!--            height: auto;-->
+<!--            backface-visibility: hidden; /* 隐藏背面 */-->
+<!--            position: absolute; /* 绝对定位 */-->
+<!--            top: 0;-->
+<!--            left: 0;-->
+<!--        }-->
+<!--        .mirror {-->
+<!--            transform: rotateY(180deg); /* 镜像处理 */-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="container">-->
+<!--        <img src="XD.jpg" alt="旋转图片">-->
+<!--        <img src="XD.jpg" alt="镜像图片" class="mirror"> &lt;!&ndash; 镜像图片 &ndash;&gt;-->
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        // 可以在这里添加更多的 JavaScript 功能（如果需要）-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAO Shulin's Space</title>
+    <style>
+        body {
+            background-color: rgb(100,8,116);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            perspective: 1000px; /* 添加透视效果 */
+        }
+        .container {
+            position: relative;
+            width: 300px; /* 根据需要调整容器大小 */
+            height: 300px; /* 根据需要调整容器大小 */
+            transform-style: preserve-3d; /* 保持3D效果 */
+            animation: rotation 5s infinite linear;
+        }
+        @keyframes rotation {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+        img {
+            width: 100%; /* 让图片填满容器 */
+            height: auto;
+            backface-visibility: hidden; /* 隐藏背面 */
+            position: absolute; /* 绝对定位 */
+            top: 0;
+            left: 0;
+        }
+        .mirror {
+            transform: rotateY(180deg); /* 镜像处理 */
+        }
+    </style>
+</head>
+<body onclick="window.location.href='https://gosling123456.github.io/'">
+    <div class="container">
+        <img src="./data/GSL/XD.jpg" alt="旋转图片">
+        <img src="./data/GSL/XD.jpg" alt="镜像图片" class="mirror"> <!-- 镜像图片 -->
+    </div>
+
+    <script>
+        // 可以在这里添加更多的 JavaScript 功能（如果需要）
+    </script>
+</body>
+</html>
