@@ -10,6 +10,7 @@
             font-family: "楷体", Palatino, serif; /* 也包括 Palatino Linotype */
             position: relative;
             user-select: none; /* 禁止文本选择 */
+            padding-top: 54px;
         }
 
         a {
@@ -36,10 +37,99 @@
             background-color: rgba(255, 255, 255, 0); /* 半透明效果 */
             pointer-events: none; /* 允许点击链接 */
         }
+
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 46px;
+            z-index: 99;
+            background: rgba(255, 255, 255, 0.94);
+            border-bottom: 1px solid #d8d8d8;
+            backdrop-filter: blur(8px);
+            font-family: "Times New Roman", "楷体", serif;
+        }
+
+        .site-nav-inner {
+            width: 1200px;
+            height: 46px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 18px;
+            font-size: 15px;
+        }
+
+        .site-nav a {
+            color: #333;
+            border-bottom: none;
+        }
+
+        .site-nav a:hover {
+            color: #8b0000;
+        }
+
+        .entry-line {
+            display: grid;
+            grid-template-columns: 1fr minmax(300px, 1.1fr) 1fr;
+            align-items: baseline;
+            column-gap: 16px;
+            width: 100%;
+        }
+
+        .entry-left {
+            text-align: left;
+        }
+
+        .entry-title {
+            text-align: center;
+        }
+
+        .entry-date {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1240px) {
+            .site-nav-inner {
+                width: auto;
+                padding: 0 16px;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px 14px;
+            }
+
+            body {
+                padding-top: 68px;
+            }
+
+            .entry-line {
+                grid-template-columns: 1fr;
+                row-gap: 2px;
+            }
+
+            .entry-title,
+            .entry-date {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div class="site-nav">
+        <div class="site-nav-inner">
+            <a href="#research">研究</a>
+            <a href="#achievement">成果</a>
+            <a href="#projects">项目</a>
+            <a href="#internship">经历</a>
+            <a href="#honors">荣誉</a>
+            <a href="data/GSL/CV-CN.pdf">简历</a>
+            <a href="./index.html"><font face="Times New Roman">EN</font></a>
+        </div>
+    </div>
     <div align="center">
         <div style="width:1200px; height:auto; padding-top: 30px;">
             <div style="float: left;">
@@ -91,7 +181,7 @@
         </div>
 
         <!-- border:1px solid #113322; -->
-        <div style="width:1200px; height:auto; padding-top: 10px;">
+        <div id="research" style="width:1200px; height:auto; padding-top: 10px;">
 
             <div style="width:1190px; height:auto; float: left; text-align: left; padding-left: 10px; ">
                 <br />
@@ -99,7 +189,7 @@
             </div>
         </div>
 <!-- 研究领域 -->
-        <div style="width:1200px; height:auto; padding-top: 10px;">
+        <div id="achievement" style="width:1200px; height:auto; padding-top: 10px;">
             <div style="width:800px; height:auto; float: left; text-align: left; padding-left: 10px;">
                 <br />
                 <font size="5px"><b>研究领域</b></font>
@@ -111,7 +201,7 @@
             </div>
         </div>
 <!-- 科研成果 -->
-        <div style="width:1200px; height:auto; padding-top: 10px;">
+        <div id="honors" style="width:1200px; height:auto; padding-top: 10px;">
             <div style="width:800px; height:auto; float: left; text-align: left; padding-left: 10px;">
                 <font size="5px"><b>科研成果</b></font>
             </div>
@@ -178,35 +268,44 @@
         </div>
 
 <!-- 项目成果 -->
-      <div style="width:1200px; height:auto; padding-top: 10px;">
+      <div id="projects" style="width:1200px; height:auto; padding-top: 10px;">
             <div style="width:800px; height:auto; float: left; text-align: left; padding-left: 10px;">
                 <font size="5px"><b>项目经历</b></font>
             </div>
             <div style="width:1190px; height:auto; float: left; text-align: left; padding-left: 10px;">
                 <ul type="circle">
-                    <li>  <strong>国家自然科学基金项目（参与）</strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong><i><font color="#14C652" style="font-style: normal;">基于互补自监督学习的<font face="Times New Roman">SAR</font>图像地物分类</font></i></strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2023.12 - 2025.12 </font></strong></i></li>
+                    <li><div class="entry-line"><span class="entry-left"><strong>组内应用项目</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">文献智能问答与辅助分析平台</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2025.10 - 2025.12 </font></strong></i></span></div></li>
+                    <p>面向课题组科研场景中文献数量多、方法信息分散、检索成本高的问题，搭建可持续迭代的<font face="Times New Roman">RAG</font>问答平台。我构建了融合关键词检索、语义检索、<font face="Times New Roman">query</font>改写与伪候选句召回的混合检索链路，<font face="Times New Roman">Top3</font>检索准确率相对基线提升<font face="Times New Roman">30%+</font>；同时完成并发访问与用户隔离，建立“用户反馈-数据清洗-策略迭代”的闭环机制。</p>
+
+                    <li><div class="entry-line"><span class="entry-left"><strong>个人项目</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">轻量级医学智能问答助手</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2025.06 - 2025.09 </font></strong></i></span></div></li>
+                    <p>面向医学知识问答场景，使用单卡<font face="Times New Roman">4090</font>完成从模型搭建到领域对齐的全流程。项目从零实现<font face="Times New Roman">BBPE tokenizer</font>训练、<font face="Times New Roman">GQA Transformer</font>与<font face="Times New Roman">MoE</font>推理优化，并设计“弱监督数据引导 + 领域<font face="Times New Roman">LoRA</font>微调 + <font face="Times New Roman">DPO</font>偏好对齐”的三阶段训练方案，使医学问答准确率相对基线提升<font face="Times New Roman">20%+</font>。</p>
+
+                    <li><div class="entry-line"><span class="entry-left"><strong>华为合作项目</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">秦岭·西电遥感脑</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2024.09 - 今 </font></strong></i></span></div></li>
+                    <p>基于多源标注数据构建“<font face="Times New Roman">L0</font>基础+<font face="Times New Roman">L1</font>行业+<font face="Times New Roman">L2</font>场景”的遥感预训练大模型体系。我参与基于<font face="Times New Roman">ViT-L/Swin-L</font>的视觉基座预训练，使用<font face="Times New Roman">40</font>万领域数据从零训练后核心任务性能提升超<font face="Times New Roman">25%</font>；并参与百万对<font face="Times New Roman">SAR</font>-光学数据跨模态对齐、模型部署与线上平台接入。</p>
+
+                    <li><div class="entry-line"><span class="entry-left"><strong>国家自然科学基金项目（参与）</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">基于互补自监督学习的<font face="Times New Roman">SAR</font>图像地物分类</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2023.12 - 2025.12 </font></strong></i></span></div></li>
 
                     <p>作为核心成员参与开发了一个基于跨分辨率对比聚类的自监督学习框架<font face="Times New Roman">SWAV-ResSegNet</font>和<font face="Times New Roman">SWRU-net</font>，旨在解决合成孔径雷达（<font face="Times New Roman">SAR</font>）图像地物分类中的三大挑战：大数据量处理、复杂地物类型识别及高昂的标注成本。通过设计代理任务利用对比学习框架在无标签数据上进行特征提取，并采用多视角样本聚类方法形成类簇以学习地物特征的本质表示；随后，在下游任务中设计基于深度学习的分类器，使用少量标签微调预训练模型，实现高精度的图像分类和分割，同时采用适当的裁剪策略优化计算资源消耗和信息完整性；引入条件随机场（<font face="Times New Roman">CRF</font>）进行后处理，进一步提高分割结果的连贯性和准确性。实验验证表明，该方法在少量标签情况下能达到接近有监督学习的性能水平，尤其在小场景下的细粒度分割任务中表现优异。最终，成功开发了一个实时<font face="Times New Roman">SAR</font>图像解译系统，能够自动化处理大规模<font face="Times New Roman">SAR</font>图像，减少人工干预，提高解译效率和准确性，并拓宽了遥感技术的应用范围。</p>
 
-                    <li>  <strong>河南省大学生创新创业训练项目（参与）</strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong><i><font color="#14C652" style="font-style: normal;">工程天眼--智慧工程危险区域安全巡检器</font></i></strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2023.12 - 2024.12 </font></strong></i></li>
+                    <li><div class="entry-line"><span class="entry-left"><strong>河南省大学生创新创业训练项目（参与）</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">工程天眼--智慧工程危险区域安全巡检器</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2023.12 - 2024.12 </font></strong></i></span></div></li>
                     <a href="https://www.bilibili.com/video/BV1PatSeVE6Y/?vd_source=3abd7e5c02556202b0fd7332844b6ba0" target="_blank">
                         <img src="./data/GSL/天眼工程.png" alt="天眼工程" style="width:100px; height:100px; float:right;">
                     </a>
                     <p>构建一个智能化的施工现场安全监控系统，通过实时监测高危区域并预警潜在的安全风险，以降低施工现场的事故发生率。在这个项目中，我利用<font face="Times New Roman">Yolo-Fastest</font>框架进行目标检测，以识别安全帽佩戴情况和人员行为。结合<font face="Times New Roman">Mediapipe</font>进行骨骼匹配，实现跌倒检测，以快速响应可能的安全事故。通过设计端侧云侧协同部署策略，优化数据处理流程，提升系统响应速度。实现危险区域自动化监测，并进行全程识别和预警。</p>
 
-                    <li>  <strong>华北水利水电大学创新创业训练项目（参与）</strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <strong><i><font color="#14C652" style="font-style: normal;">吾驾之宝--安全驾驶行为监测预警系统</font></i></strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2022.12 - 2023.12 </font></strong></i></li>
+                    <li><div class="entry-line"><span class="entry-left"><strong>华北水利水电大学创新创业训练项目（参与）</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">吾驾之宝--安全驾驶行为监测预警系统</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2022.12 - 2023.12 </font></strong></i></span></div></li>
                     <a href="https://www.bilibili.com/video/BV1634y1M7RW/?spm_id_from=333.999.0.0" target="_blank">
                         <img src="./data/GSL/安全驾驶行为监测预警.png" alt="安全驾驶行为监测预警" style="width:100px; height:100px; float:right;">
                     </a>
                     <p>开发一套基于<font face="Times New Roman">AIoT</font>技术的安全驾驶行为检测预警系统。该项目通过集成疲劳检测算法、行为识别模型、视频推流与加密技术，以及多种传感器设备，实现了对驾驶员疲劳和分心行为的实时监测与预警。我负责了系统的概要设计、详细设计、硬件选型、软件开发及测试验证工作，确保了系统在各种光照环境下的高准确率识别和稳定运行。此外，我还设计了微信小程序用于数据展示，提高了用户体验，为营运车辆安全管理提供了有效的技术解决方案。</p>
 
-                    <li>  <strong>华北水利水电大学创新创业训练项目（主持）</strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<strong><i><font color="#14C652" style="font-style: normal;"> 智能轮式监控机器人 </font></i></strong>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2022.12 - 2023.12 </font></strong></i></li>
+                    <li><div class="entry-line"><span class="entry-left"><strong>华北水利水电大学创新创业训练项目（主持）</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">智能轮式监控机器人</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2022.12 - 2023.12 </font></strong></i></span></div></li>
                     <a href="https://www.bilibili.com/video/BV1894y1b7Cr/?spm_id_from=333.999.0.0" target="_blank">
                         <img src="./data/GSL/智能轮式监控机器人.png" alt="智能轮式监控机器人" style="width:100px; height:100px; float:right;">
                     </a>
                     <p>开发了一款智能机器人，名为"慧眼宝"，用于幼童的安全监护和亲子陪伴。利用红外传感器和超声波传感器以及摄像头和扬声器该机器人具备障碍感知、获取图像、动态决策和语音交互能力，能够自主导航并跟随幼童，同时检测危险场景并通过音频提示信号提醒监护人。最终开发了是一款功能全面的智能机器人，为幼童提供全方位的安全保护和富有趣味的互动体验。该机器人在2023年中国大学生计算机设计大赛中获得了国家级二等奖。</p>
 
-                    <li>  <strong>华北水利水电大学创新创业训练项目（主持）</strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<strong><i><font color="#14C652" style="font-style: normal;">智能育苗</font></i></strong>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2021.12 - 2022.12 </font></strong></i></li>
+                    <li><div class="entry-line"><span class="entry-left"><strong>华北水利水电大学创新创业训练项目（主持）</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">智能育苗</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2021.12 - 2022.12 </font></strong></i></span></div></li>
                     <a href="https://www.bilibili.com/video/BV15V41117VN/?spm_id_from=333.999.0.0" target="_blank">
                         <img src="./data/GSL/智能育苗.png" alt="智能育苗" style="width:100px; height:100px; float:right;">
                     </a>
@@ -216,18 +315,24 @@
         </div>
 
 <!-- 实习经历 -->
-        <div style="width:1200px; height:auto; padding-top: 10px;">
+        <div id="internship" style="width:1200px; height:auto; padding-top: 10px;">
             <div style="width:800px; height:auto; float: left; text-align: left; padding-left: 10px;">
                 <font size="5px"><b>实习经历</b></font>
             </div>
             <div style="width:1190px; height:auto; float: left; text-align: left; padding-left: 10px;">
                 <ul type="circle">
-                    <li>  <strong><a href="http://www.mfeducation.cn/">梦孚（上海）教育科技有限公司</a></strong><a href="./data/GSL/梦孚（上海）教育科技有限公司实习证明.pdf">【实习证明】</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<strong><i><font color="#14C652" style="font-style: normal;"> <font face="Times New Roman">AI</font>项目导师 </font></i></strong>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2024.06 - 2024.08 </font></strong></i></li>
+                    <li><div class="entry-line"><span class="entry-left"><strong>中兴通讯股份有限公司</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;"><font face="Times New Roman">AI</font>算法工程师</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2026.05 - 今 </font></strong></i></span></div></li>
+                    <p>面向<font face="Times New Roman">CI/CD</font>研发运维中知识问答、状态查询、工具操作和权限控制并存的复合任务，设计轻量级<font face="Times New Roman">Agent Runtime</font>，将<font face="Times New Roman">LTE</font>知识问答、<font face="Times New Roman">Gerrit</font>审查、构建结果查询、合入单<font face="Times New Roman">CI</font>查询等能力统一到数字员工交互入口。负责“单<font face="Times New Roman">Agent</font>决策 + 多<font face="Times New Roman">Skill</font>执行 + 规则兜底”的架构设计，基于<font face="Times New Roman">MessageBus</font>实现长任务异步执行与主动推送，并设计会话记忆、摘要压缩、输出截断和工号白名单鉴权机制。</p>
+
+                    <li><div class="entry-line"><span class="entry-left"><strong>陕西元翌科技有限公司</strong></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">大模型应用算法工程师</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2025.06 - 2025.09 </font></strong></i></span></div></li>
+                    <p>主导设计并落地基于多<font face="Times New Roman">Agent</font>的自动化渗透测试系统，采用<font face="Times New Roman">Plan & Execute</font>架构，将工具调度、智能分析与报告生成串联为一体化流程，报告生成效率提升<font face="Times New Roman">90%+</font>。项目中构建规划<font face="Times New Roman">Agent</font>、子任务<font face="Times New Roman">Agent</font>、总结<font face="Times New Roman">Agent</font>和校验<font face="Times New Roman">Agent</font>协同体系，并基于<font face="Times New Roman">RAG</font>与向量库完成漏洞知识检索和结构化报告生成。</p>
+
+                    <li><div class="entry-line"><span class="entry-left"><strong><a href="http://www.mfeducation.cn/">梦孚（上海）教育科技有限公司</a></strong><a href="./data/GSL/梦孚（上海）教育科技有限公司实习证明.pdf">【实习证明】</a></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;"><font face="Times New Roman">AI</font>项目导师</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2024.06 - 2024.08 </font></strong></i></span></div></li>
                     <p><strong>蛋白质盲突变预测：</strong>提出了一种新颖的方法，通过整合蛋白质的一级和三级结构，使用等变图神经网络（<font face="Times New Roman">Equivariant Graph Neural Network, EGNN</font>），预测蛋白质突变的影响。利用<font face="Times New Roman">EGNN</font>整合蛋白质的一级和三级结构，捕捉蛋白质的全局和局部表示。通过<font face="Times New Roman">Transformer</font>模型<font face="Times New Roman">ESM-2</font>对蛋白质序列进行语义嵌入，提取蛋白质序列的进化信息。使用<font face="Times New Roman">EGNN</font>对蛋白质的几何结构进行拓扑编码，捕捉蛋白质的微观环境和局部结构。引入随机扰动，模拟自然突变，防止模型过拟合。通过比较突变前后的蛋白质序列嵌入，计算适应度分数，评估突变蛋白的稳定性。</p>
                     <p><strong>多发性硬化症的可调整长时间<font face="Times New Roman">FLAIR MRI</font>估计/合成：</strong>项目旨在通过深度学习技术提升病变区域分割的精确度，以支持医疗诊断与治疗。病变区域的准确识别对于制定有效的治疗方案至关重要，能够直接影响患者的预后和生活质量。因此，提高脑部<font face="Times New Roman">MRI</font>图像的分割精度具有重要的临床意义。核心工作包括对脑部<font face="Times New Roman">MRI</font>图像数据集进行预处理，以确保数据符合深度学习模型的要求。在模型开发方面，首先采用了经典的<font face="Times New Roman">U-Net</font>架构，并引入注意力机制，以增强模型对关键区域的识别能力。此外，基于预训练的<font face="Times New Roman">ResNet34</font>模型，构建了特征提取能力更强的<font face="Times New Roman">U-Net</font>变体，从而加速训练过程并提升性能。在损失函数方面，实现了基本的<font face="Times New Roman">Dice Loss</font>，并尝试了<font face="Times New Roman">Soft IoU Loss</font>和<font face="Times New Roman">Calc Loss</font>，以优化训练效果。通过设计包括数据增强、学习率调整和批次大小选择的训练流程，进行了多轮实验，细致调整了模型参数与训练策略。性能评估主要依赖于<font face="Times New Roman">Dice</font>相似系数（<font face="Times New Roman">DSC</font>），用于对比分析不同模型结构和损失函数的效果。实验结果表明，基础U-Net模型在测试集上达到了约<font face="Times New Roman">90%</font>的<font face="Times New Roman">DSC</font>值，引入注意力机制后，<font face="Times New Roman">DSC</font>值提升至<font face="Times New Roman">91.45%</font>，显示了显著的性能改善。<font face="Times New Roman">ResNet34</font>与<font face="Times New Roman">U-Net</font>的组合模型表现良好，<font face="Times New Roman">DSC</font>值达到了<font face="Times New Roman">91.17%</font>，且训练速度更快。</p>
                     <p><strong><font face="Times New Roman">AI</font>壁画修复技术研究与开发：</strong>旨在利用先进的<font face="Times New Roman">AI</font>算法攻克文物修复难题，特别是针对壁画的数字化修复工作。选择并训练现有的<font face="Times New Roman">Muralnet</font>模型，采用对抗生成网络技术来优化壁画修复效果。配置和维护实验环境，包括<font face="Times New Roman">Python 3.7、PyTorch 1.6</font>，以及<font face="Times New Roman">NVIDIA GPU RTX2080ti</font>等硬件资源。设定和调整模型参数，包括训练模式、非极大值抑制、随机种子等，以适应不同实验需求。使用<font face="Times New Roman">Python</font>进行图像降噪和边缘提取，采用<font face="Times New Roman">Canny</font>算子实现最佳边缘检测效果。统一处理不同尺寸的壁画图像，进行数据预处理，以提高模型训练的准确性和效果。对模型进行训练和测试，记录和分析输入图片、原图线稿、得到图片和预期效果的对比。实现了壁画图像的初步修复和颜色补充，提升了修复效率和质量。通过实验发现并提出了模型参数和训练策略的优化方向，为模型的进一步改进奠定了基础。探索了数据处理的高效方法，减少了单张图片的处理时间，提高了整体工作效率。</p>
                     <p><strong>旋律魔方：</strong>旨在将人声哼唱的旋律转化为音乐作品，为音乐创作提供创新途径。我负责音频处理、特征提取、音符识别、序列生成以及使用循环神经网络（<font face="Times New Roman">RNN</font>）和长短期记忆网络（<font face="Times New Roman">LSTM</font>）进行序列建模和音乐续写算法的开发。通过训练模型识别哼唱旋律并生成伴奏，我确保了系统的技术实现准确、音乐质量具有艺术性，并优化了用户体验。项目最终实现了<font face="Times New Roman">65.7%</font>的准确率</p>
-                    <li>  <strong><a href="https://www.bjhzwq.com/">北京合众伟奇科技股份有限公司</a></strong><a href="./data/GSL/北京合众伟奇科技股份有限公司实习证明.pdf">【实习证明】</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<strong><i><font color="#14C652" style="font-style: normal;">数据分析师</font></i></strong>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2023.07 - 2023.10 </font></strong></i></li>
+                    <li><div class="entry-line"><span class="entry-left"><strong><a href="https://www.bjhzwq.com/">北京合众伟奇科技股份有限公司</a></strong><a href="./data/GSL/北京合众伟奇科技股份有限公司实习证明.pdf">【实习证明】</a></span><span class="entry-title"><strong><i><font color="#14C652" style="font-style: normal;">数据分析师</font></i></strong></span><span class="entry-date"><i><strong><font color="#C64A5F" face="Times New Roman" style="font-style: normal;">2023.07 - 2023.10 </font></strong></i></span></div></li>
                         <p><strong><font face="Times New Roman">1.</font>设计电表<font face="Times New Roman">OCR</font>模型：</strong>负责设计、集成<font face="Times New Roman">OCR</font>模型，通过自适应图像裁剪方式提高裁剪后各小图的识别速度,以统计方式改善边界文字信息,提升识别精度;通过模型并行处理方式能够提高识别速度，解决了现有<font face="Times New Roman">OCR</font>技术主要采用压缩图片大小的方式来缓解大尺寸图像,使得检测到的文本信息被遗漏,导致识别精度降低以及深度学习算法对运行环境要求较高,在普通配置的硬件上运行速度稍差的问题。</p>
                         <p><strong><font face="Times New Roman">2. </font>研发电力巡检安全监测模型：</strong>参与现场作业智慧模型研发工作，针对电力巡检的工人的安全穿戴服装（如安全帽、工作服、绝缘手套、绝缘鞋等保证安全的设备）规范进行监测。模型基于<font face="Times New Roman">Paddle</font>框架开发，主要利用<font face="Times New Roman">PicoDet</font>和<font face="Times New Roman">PP-yoloe</font>网络训练模型，再模型做量化处理使模型轻化。此外负责模型的修正和数据审核修正的工作。</p>
                         <p><strong><font face="Times New Roman">3. </font>优化图像清晰度：</strong>参与并解决了现场关键信息图像不清晰的问题，利用超分辨率模型处理和生成对抗网络生成原图像。</p>
